@@ -1,52 +1,50 @@
-﻿namespace Pokemon_Act_2.Models
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace Pokemon_Act_2.Models
 {
     public class Pokemon
     {
+        [JsonProperty("name")]
         public string Name { get; set; }
-        public List<PokemonMove> Moves { get; set; }
-        public List<AbilityEntry> Abilities { get; set; }
-    }
-    public class AbilityEntry
-    {
-        public Ability Ability { get; set; }
-        public bool IsHidden { get; set; }
-        public int Slot { get; set; }
+
+        [JsonProperty("sprites")]
+        public Sprites Sprites { get; set; }
+
+        [JsonProperty("moves")]
+        public List<Move> Moves { get; set; }
+
+        [JsonProperty("abilities")]
+        public List<Ability> Abilities { get; set; }
     }
 
-    public class Ability
+    public class Sprites
     {
-        public string Name { get; set; }
-        public string Url { get; set; }
-    }
-
-    public class PokemonMove
-    {
-        public Move Move { get; set; }
-        public List<VersionGroupDetail> VersionGroupDetails { get; set; }
+        [JsonProperty("front_default")]
+        public string FrontDefault { get; set; }
     }
 
     public class Move
     {
-        public string Name { get; set; }
-        public string Url { get; set; }
+        [JsonProperty("move")]
+        public MoveDetail MoveDetail { get; set; }
     }
 
-    public class VersionGroupDetail
+    public class MoveDetail
     {
-        public int LevelLearnedAt { get; set; }
-        public MoveLearnMethod MoveLearnMethod { get; set; }
-        public VersionGroup VersionGroup { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
-    public class MoveLearnMethod
+    public class Ability
     {
-        public string Name { get; set; }
-        public string Url { get; set; }
+        [JsonProperty("ability")]
+        public AbilityDetail AbilityDetail { get; set; }
     }
 
-    public class VersionGroup
+    public class AbilityDetail
     {
+        [JsonProperty("name")]
         public string Name { get; set; }
-        public string Url { get; set; }
     }
 }
