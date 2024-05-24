@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Pokemon_Act_2.Models;
 
 namespace Pokemon_Act_2.Controllers
 {
