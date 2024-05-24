@@ -1,0 +1,44 @@
+﻿@model Pokemon_Act_2.Models.Pokemon
+
+@{
+    ViewData["Title"] = @Model.Name;
+}
+
+<div class="container">
+    <h1>@Model.Name</h1>
+
+    <div class="pokemon-image">
+        <img src="@Model.Sprites.FrontDefault" alt="@Model.Name" />
+    </div>
+
+    <h2>Moves</h2>
+    <ul>
+        @foreach (var move in Model.Moves)
+        {
+            <li>@move.MoveDetail.Name</li>
+        }
+    </ul>
+
+    <h2>Abilities</h2>
+    <ul>
+        @foreach (var ability in Model.Abilities)
+        {
+            <li>@ability.AbilityDetail.Name</li>
+        }
+    </ul>
+
+    <div class="pagination">
+        @if (ViewData["PreviousPokemon"] != null)
+        {
+            var previousPokemon = ViewData["PreviousPokemon"] as Pokemon;
+            <a href="@Url.Action("Details", new { name = previousPokemon.Name })">Previous: @previousPokemon.Name</a>
+        }
+
+        @if (ViewData["NextPokemon"] != null)
+        {
+            var nextPokemon = ViewData["NextPokemon"] as Pokemon;
+            <a href="@Url.Action("Details", new { name = nextPokemon.Name })">Next: @nextPokemon.Name</a>
+        }
+
+    </div>
+</div>
